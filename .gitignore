@@ -1,0 +1,5 @@
+# Ignorar archivos con extensión .cph
+*.cph
+
+# Ignorar archivos con extensión .bin
+*.bin
