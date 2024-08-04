@@ -20,6 +20,7 @@ bool verificar(int a, int b){
     digits['8']= 0;
     digits['9']= 0;
 
+    if(digits_use.length() < 9) return false;
     if(digits_use.length() == 9) digits['0']++;
 
     for(auto i : digits_use){
@@ -73,12 +74,13 @@ int main(){
                 sol = true;
                 cout<<setfill('0')<<setw(5)<<divides;
                 cout<<" / ";
-                cout<<setfill('0')<<setw(5)<<i<<'\n';
+                cout<<setfill('0')<<setw(5)<<i;
+                cout<<" = "<<n<<'\n';
             }
         }
 
         if(!sol){
-            cout<<"There are no solutions for "<<n<<"."<<'\n';
+            cout<<"There are no solutions for "<<n<<".\n";
         }       
 
         first_case = false; 
