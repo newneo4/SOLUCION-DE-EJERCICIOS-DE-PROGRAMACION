@@ -6,39 +6,23 @@ using namespace std;
 // } Driver Code Ends
 class Solution {
   public:
-    // Function to find the maximum number of meetings that can
-    // be performed in a meeting room.
     int maxMeetings(int n, int start[], int end[]) {
-        int ans = 0, i = 0, j = 0, last_meet = end[0] - 1;
-        
-        sort(start, start + n);
-        sort(end, end + n);
-        
-        // while(i < n || j < n){
-        //     while(i < n && start[i] <= last_meet){
-        //         i++;
-        //     }
-            
-        //     while(j + 1 < n && start[i] >= end[j]){
-        //         j++;
-        //     }
-            
-        //     if(j < n && i < n && start[i] < end[j]){
-        //         ans++;
-        //         i++;
-        //         j++;
-        //         last_meet = end[j];
-        //     }
-            
-        //     cout<<i<<' '<<j<<endl;
-        // }
-
-        for (size_t i = 0; i < n; i++)
-        {
-            cout<<start[i]<<' '<<end[i]<<'\n';
+        vector<pair<int, int>> meetings;
+        for (int i = 0; i < n; i++) {
+            meetings.push_back({end[i], start[i]});
         }
         
+        sort(meetings.begin(), meetings.end());
+
+        int ans = 0, last_meet_end = 0;
         
+        for (int i = 0; i < n; i++) {
+            if (meetings[i].second > last_meet_end) {
+                last_meet_end = meetings[i].first;
+                ans++;
+            }
+        }
+
         return ans;
     }
 };
