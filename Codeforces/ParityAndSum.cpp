@@ -1,4 +1,4 @@
-//https://codeforces.com/contest/1993/problem/A
+//https://codeforces.com/contest/1993/problem/B
 #include <bits/stdc++.h>
 
 #define fastIO ios::sync_with_stdio(0); cin.tie(0);
@@ -15,15 +15,15 @@ int main() {
     cin >> t;
 
     while (t--) {
-        int n, max_odd = 0, ans = 0;
+        ll n, max_odd = 0, ans = 0;
         cin>>n;
 
-        vector<int>numbers(n,0), even;
+        vector<ll>numbers(n,0), even;
 
-        for(int i = 0; i < n; i++){
+        for(ll i = 0; i < n; i++){
             cin>>numbers[i];
 
-            if(numbers[i] % 2) max_odd = max(max_odd, numbers[0]);
+            if(numbers[i] % 2) max_odd = max(max_odd, numbers[i]);
 
             else even.pb(numbers[i]);
         }    
@@ -33,12 +33,15 @@ int main() {
         else{
             sort(even.begin(), even.end());
 
-            for(int i = even.size() - 1; i >= 0; i--){
-                while(i >= 0 && even[i] > max_odd){
-                    max_odd += even[i];
-                    ans+= 2;
+            for(ll i = 0; i < even.size(); i++){
+                if(even[i] > max_odd){
+                    ans = even.size() + 1;
+                    break;
                 }
-                else ans++;
+                else{
+                    ans++;
+                    max_odd += even[i];
+                }
             }
 
             cout<<ans<<'\n';
