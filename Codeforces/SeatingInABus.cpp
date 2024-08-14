@@ -1,4 +1,4 @@
-//https://codeforces.com/contest/2000/problem/A
+//https://codeforces.com/contest/2000/problem/B
 
 #include <bits/stdc++.h>
 
