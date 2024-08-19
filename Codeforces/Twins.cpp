@@ -1,35 +1,34 @@
-//https://codeforces.com/problemset/problem/160/A
 #include <bits/stdc++.h>
-
-#define vii vector<int>
 
 using namespace std;
 
+#define fastIO ios::sync_with_stdio(0); cin.tie(0);
+#define vii vector<int>
+
 int main(){
     
-    int n; cin>>n;
-
-    vii coins(n,0);
-    int suma = 0;
-
-    for(int i = 0; i < n; i++){
-        cin>>coins[i];
-
-        suma+= coins[i];
-    }
-
-    int aux = 0, pos = coins.size() - 1;
+    int n, suma = 0; cin>>n;
     
-    sort(coins.begin(), coins.end());
-
-    while(pos >= 0 && aux < suma){
-        cout<<suma<< ' '<<aux<<endl;
-        aux += coins[pos];
-        suma -= coins[pos];
+    vii numbers(n);
+    
+    for(int i = 0; i < n; i++){
+        cin>>numbers[i];
+        suma += numbers[i];
+    }
+    
+    int pos = n - 1, aux = 0;
+    
+    sort(numbers.begin(), numbers.end());
+    
+    while(pos >= 0 && suma >= aux){
+        
+        aux += numbers[pos];
+        suma -= numbers[pos];
+    
         pos--;
     }
-
-    cout<<int(coins.size()) - pos - 1;
+    
+    cout<<n - pos - 1;
 
     return 0;
 }
