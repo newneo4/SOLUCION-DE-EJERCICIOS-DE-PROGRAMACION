@@ -21,8 +21,7 @@ class Solution {
             q.pop();
             
             ans.push_back(current);
-            
-            
+                        
             for(auto x : adj[current]){
                 if(!visited[x]){
                     visited[x] = true;
